@@ -1,3 +1,1050 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
-:root{font-family:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#22232a;background:#f6f7fb;font-synthesis:none;text-rendering:optimizeLegibility;--bg:#f6f7fb;--card:#fff;--text:#22232a;--muted:#8b8d98;--line:#eceef3;--accent:#5d68e8;--shadow:0 6px 26px rgba(34,39,76,.045}*{box-sizing:border-box}body{margin:0;min-width:320px;background:var(--bg)}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #939afa66;outline-offset:2px}.app-shell{min-height:100vh}.sidebar{width:248px;position:fixed;inset:0 auto 0 0;background:#fff;border-right:1px solid var(--line);padding:26px 17px 18px;display:flex;flex-direction:column;z-index:5}.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--text);font:800 21px Manrope,sans-serif;letter-spacing:-.7px;padding:0 10px 38px}.brand-mark{width:37px;height:37px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(145deg,#707bf6,#545fda);color:#fff;font:800 21px Manrope;box-shadow:0 5px 12px #6570e733}.brand small{display:block;color:#9b9da7;font:400 10px 'DM Sans',sans-serif;letter-spacing:0;margin-top:1px}.nav-label{font-size:10px;font-weight:700;letter-spacing:1.15px;color:#b1b2bb;padding:0 12px 9px}.sidebar nav{display:grid;gap:5px}.nav-item{position:relative;width:100%;display:flex;align-items:center;gap:12px;border:0;background:transparent;color:#82848f;text-align:left;border-radius:11px;padding:11px 12px;font-size:13px;font-weight:500;transition:background .18s,color .18s,transform .18s}.nav-item:hover{background:#f6f7fb;color:#3b3d48}.nav-item.active{color:#5864df;background:#f0f1ff;font-weight:600}.nav-item.active svg{stroke-width:2.2}.nav-dot{width:6px;height:6px;border-radius:50%;background:#6975ea;margin-left:auto}.sidebar-bottom{margin-top:auto}.profile{display:flex;align-items:center;gap:10px;padding:17px 8px 0;margin-top:13px;border-top:1px solid var(--line)}.avatar{width:35px;height:35px;border-radius:50%;display:grid;place-items:center;color:#646ee1;background:#eff0ff;font-weight:700}.profile strong,.profile small{display:block}.profile strong{font-size:11px}.profile small{font-size:9px;color:#9b9da7;margin-top:3px}.main{margin-left:248px;min-height:100vh}.topbar{height:65px;background:#ffffffc9;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:flex-end;padding:0 42px;position:sticky;top:0;z-index:4;backdrop-filter:blur(16px)}.topbar-right{display:flex;align-items:center;gap:20px}.today-date{display:flex;align-items:center;gap:8px;color:#777a86;font-size:12px}.today-date svg{color:#8589a0}.language-select{border:1px solid var(--line);background:#fff;border-radius:9px;padding:7px 9px;color:#535560;font-size:11px}.mobile-brand{display:none}.content{max-width:1220px;margin:0 auto;padding:32px 42px 25px}.page-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:23px}.eyebrow{font-size:10px;color:#989aa5;text-transform:uppercase;letter-spacing:1.2px;font-weight:700;margin-bottom:7px}.page-heading h1{font:700 clamp(24px,3vw,31px) Manrope,sans-serif;letter-spacing:-1.1px;margin:0;color:#24252c}.page-heading h1 span{font-size:23px}.page-heading p{margin:6px 0 0;color:#92949f;font-size:12px}.button{border:0;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;font-size:12px;font-weight:600;transition:transform .18s,box-shadow .18s,background .18s}.button:hover{transform:translateY(-1px)}.button.primary{color:#fff;background:#606be5;box-shadow:0 5px 12px #606be52c}.button.primary:hover{background:#515dd8;box-shadow:0 7px 16px #606be53b}.button.secondary{color:#656773;background:#f1f2f6}.month-picker{display:flex;align-items:center;gap:9px;margin-bottom:15px}.month-picker strong{text-transform:capitalize;font-size:12px;min-width:105px;text-align:center}.icon-button{width:31px;height:31px;border:1px solid var(--line);border-radius:9px;display:grid;place-items:center;background:#fff;color:#7a7c87;transition:background .15s,color .15s}.icon-button:hover{background:#f3f4ff;color:#5864df}.month-picker input{border:0;background:transparent;color:#999aa4;width:24px;opacity:.65;font-size:10px}.stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-bottom:17px}.stats-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}.stat-card,.panel{background:#fff;border:1px solid #eff0f4;border-radius:15px;box-shadow:var(--shadow)}.stat-card{padding:16px 17px;min-height:116px}.stat-icon{width:31px;height:31px;border-radius:10px;display:grid;place-items:center;margin-bottom:11px}.stat-icon.green{color:#35a879;background:#eaf8f1}.stat-icon.red{color:#dd7076;background:#fff0f0}.stat-icon.blue{color:#5d71d9;background:#eef0ff}.stat-icon.violet{color:#a173ce;background:#f7efff}.stat-label{color:#92949e;font-size:10px;margin-bottom:5px}.stat-value{display:block;font:700 clamp(15px,1.8vw,20px) Manrope,sans-serif;letter-spacing:-.55px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.dashboard-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:15px}.panel{padding:18px 19px}.panel-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:13px}.panel-title h2,.report-heading h2{font:700 14px Manrope,sans-serif;margin:0;color:#30313a}.text-button{display:inline-flex;align-items:center;gap:3px;border:0;background:none;color:#7479d4;font-size:10px;padding:4px}.text-button:hover{color:#515dd8}.list{display:grid}.list-row{display:flex;align-items:center;gap:11px;min-height:58px;border-top:1px solid #f1f2f5;padding:9px 0}.list-row:first-child{border-top:0}.row-main{flex:1;min-width:0}.row-main strong{display:block;color:#393a43;font-size:11px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.row-main small{display:block;color:#a1a2ab;font-size:9px;margin-top:4px}.task-check{width:18px;height:18px;flex:none;border:1.5px solid #dfe1e8;border-radius:6px;background:#fff;color:#fff;display:grid;place-items:center;padding:0}.task-check.checked{border-color:#69bd97;background:#69bd97}.task-row.is-done .row-main strong{text-decoration:line-through;color:#a1a2ab}.status{border-radius:20px;padding:4px 7px;background:#fff5e8;color:#d09a50;font-size:8px;white-space:nowrap}.status.complete{background:#eaf8f1;color:#4ca47c}.row-delete{opacity:0;border:0;width:27px;height:27px;background:transparent;color:#b1b2bb}.list-row:hover .row-delete{opacity:1}.transaction-icon{width:31px;height:31px;border-radius:10px;display:grid;place-items:center;flex:none}.transaction-icon.income{background:#eaf8f1;color:#3da579}.transaction-icon.expense{background:#fff0f0;color:#d76a71}.transaction-amount{font-size:10px;white-space:nowrap}.transaction-amount.income{color:#39a277}.transaction-amount.expense{color:#d86b73}.empty-state,.empty-panel{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:150px;gap:9px;color:#9698a3}.empty-state p{font-size:11px;margin:0}.empty-icon{width:40px;height:40px;border-radius:13px;background:#f3f4fb;color:#888de0;display:grid;place-items:center}.empty-state .text-button{margin-top:2px}.report-card{margin-top:15px;padding:18px 20px}.report-heading{display:flex;align-items:center;gap:10px}.report-spark{width:34px;height:34px;border-radius:11px;background:#f1f0ff;color:#7774d9;display:grid;place-items:center}.report-heading h2{margin-bottom:3px}.report-heading small{font-size:9px;color:#9b9da7;text-transform:capitalize}.report-badge{margin-left:auto;border-radius:20px;padding:5px 9px;background:#f5f4ff;color:#7876cd;font-size:9px}.report-body{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;padding:17px 0 13px}.report-metric{display:flex;flex-direction:column;gap:6px}.report-metric span{font-size:9px;color:#989aa4}.report-metric strong{font-size:12px;color:#42434c}.report-disclaimer{display:flex;align-items:center;gap:7px;border-top:1px solid #f1f2f5;margin:0;padding-top:12px;color:#9698a3;font-size:9px}.report-disclaimer svg{color:#8e88d8;flex:none}.goal-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.goal-card{position:relative}.goal-icon{width:35px;height:35px;border-radius:11px;background:#f1f0ff;color:#7976dc;display:grid;place-items:center}.goal-card h3{font-size:13px;margin:14px 0 8px}.goal-amount{font:700 17px Manrope;color:#363741}.goal-amount span{font:400 10px 'DM Sans';color:#999ba4}.progress-track{height:7px;border-radius:10px;background:#f0f1f5;margin:14px 0 8px;overflow:hidden}.progress-track div{height:100%;background:linear-gradient(90deg,#8088ed,#5f6be5);border-radius:10px;transition:width .35s}.progress-label{display:flex;justify-content:space-between;color:#999ba4;font-size:9px}.progress-label strong{color:#686dd0}.remove-goal{position:absolute;right:14px;top:14px;opacity:0}.goal-card:hover .remove-goal{opacity:1}.footer{padding:18px 1px 5px;text-align:center;color:#b0b1ba;font-size:9px}.panel-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}.search-box{display:flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:9px;padding:7px 9px;color:#a0a1aa}.search-box input{width:100px;border:0;outline:0;font-size:10px}.settings-panel{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}.settings-panel strong,.settings-panel small{display:block}.settings-panel strong{font-size:12px}.settings-panel small{font-size:10px;color:#9b9da7;margin-top:4px}.settings-panel select{border:1px solid var(--line);border-radius:9px;padding:8px;background:#fff}.privacy-note{display:flex;gap:11px;align-items:flex-start;color:#878992;font-size:11px;line-height:1.6}.privacy-note svg{color:#787dd9;flex:none}.privacy-note p{margin:0}.modal-backdrop{position:fixed;inset:0;background:#20212a66;z-index:10;display:grid;place-items:center;padding:16px;backdrop-filter:blur(4px);animation:fade .16s ease}.modal{width:min(100%,440px);background:#fff;border-radius:18px;padding:22px;box-shadow:0 20px 70px #17182733;animation:rise .2s ease}.modal-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:19px}.modal-heading h2{font:700 19px Manrope;margin:0}.modal label{display:flex;flex-direction:column;gap:6px;color:#777984;font-size:10px;margin-bottom:12px}.modal input,.modal select{width:100%;border:1px solid #e8e9ef;border-radius:10px;padding:10px 11px;background:#fff;color:#34353d;font-size:12px}.form-two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:8px}.modal-actions .button{min-width:84px}.modal .icon-button{width:32px;height:32px}@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes rise{from{transform:translateY(8px);opacity:.7}to{transform:translateY(0);opacity:1}}@media(max-width:1050px){.content{padding:28px 25px}.topbar{padding:0 25px}.sidebar{width:220px}.main{margin-left:220px}.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.stat-value{font-size:18px}}@media(max-width:760px){.sidebar{width:auto;inset:auto 0 0;height:65px;padding:6px 8px calc(6px + env(safe-area-inset-bottom));border-right:0;border-top:1px solid var(--line);flex-direction:row;justify-content:center;background:#ffffffed;backdrop-filter:blur(18px)}.brand,.nav-label,.sidebar-bottom{display:none}.sidebar nav{display:flex;width:100%;justify-content:space-around;gap:3px}.nav-item{width:auto;min-width:52px;flex-direction:column;justify-content:center;gap:3px;padding:6px 9px;font-size:8px}.nav-item svg{width:18px;height:18px}.nav-dot{position:absolute;right:10px;top:5px}.main{margin-left:0;padding-bottom:72px}.topbar{height:57px;justify-content:space-between;padding:0 17px}.mobile-brand{display:flex;align-items:center;gap:8px;font:800 16px Manrope}.mobile-brand .brand-mark{width:29px;height:29px;font-size:17px;border-radius:10px}.topbar-right{gap:10px}.today-date{font-size:10px}.today-date svg{width:14px}.content{padding:24px 17px}.dashboard-grid{grid-template-columns:1fr}.goal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.status{font-size:7px;padding:4px 6px}.row-delete{opacity:.7}}@media(max-width:480px){.content{padding:20px 13px}.page-heading{align-items:flex-start;margin-bottom:18px}.page-heading h1{font-size:24px}.page-heading p{font-size:10px}.page-heading>.button{padding:9px 10px;font-size:10px;white-space:nowrap}.page-heading>.button svg{width:14px}.stats-grid{gap:9px}.stats-grid.three{grid-template-columns:1fr 1fr}.stats-grid.three .stat-card:last-child:nth-child(odd){grid-column:span 2}.stat-card{padding:13px;min-height:105px}.stat-value{font-size:15px}.panel{padding:15px}.report-body{gap:8px}.report-metric strong{font-size:10px}.report-metric span{font-size:8px}.report-disclaimer{align-items:flex-start;line-height:1.5}.goal-grid{grid-template-columns:1fr}.today-date{max-width:185px;overflow:hidden;white-space:nowrap}.list-row{gap:8px}.transaction-amount{font-size:9px}.modal{padding:18px}.form-two{gap:7px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+import { useEffect, useMemo, useState } from 'react';
+import {
+  Activity,
+  ArrowRight,
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  CircleDollarSign,
+  FileText,
+  Home,
+  LogIn,
+  LogOut,
+  Plus,
+  Search,
+  Settings,
+  Target,
+  Trash2,
+  TrendingDown,
+  TrendingUp,
+  User,
+  Wallet,
+  CalendarDays,
+  Sparkles
+} from 'lucide-react';
+
+const STORAGE_KEY = 'kunim-real-app-v1';
+const categories = {
+  transport: { uz: 'Transport', ru: 'Транспорт' },
+  food: { uz: 'Ovqat', ru: 'Еда' },
+  home: { uz: 'Uy', ru: 'Дом' },
+  work: { uz: 'Ish', ru: 'Работа' },
+  health: { uz: 'Salomatlik', ru: 'Здоровье' },
+  other: { uz: 'Boshqa', ru: 'Другое' }
+};
+
+const translations = {
+  uz: {
+    appName: 'Kunim',
+    dashboard: 'Umumiy',
+    planner: 'Rejalar',
+    finance: 'Moliya',
+    goals: 'Maqsadlar',
+    reports: 'Hisobot',
+    settings: 'Sozlamalar',
+    login: 'Kirish',
+    signup: 'Ro‘yxatdan o‘tish',
+    email: 'Email',
+    password: 'Parol',
+    phone: 'Telefon raqami',
+    fullName: 'To‘liq ismingiz',
+    welcome: 'Shaxsiy reja va moliya',
+    welcomeText: 'O‘z kuningizni rejalashtiring, xarajatlaringizni kuzating va maqsadlaringizga erishing.',
+    continueWithGoogle: 'Google bilan davom etish',
+    continueWithPhone: 'Telefon bilan davom etish',
+    noAccount: 'Hisobingiz yo‘qmi?',
+    haveAccount: 'Hisobingiz bormi?',
+    addTask: 'Vazifa qo‘shish',
+    addTransaction: 'Yozuv qo‘shish',
+    addGoal: 'Maqsad qo‘shish',
+    today: 'Bugun',
+    monthIncome: 'Kirim',
+    monthExpense: 'Chiqim',
+    balance: 'Qoldiq',
+    monthLabel: 'Oy',
+    recent: 'So‘nggi yozuvlar',
+    taskTitle: 'Vazifa nomi',
+    date: 'Sana',
+    time: 'Vaqt',
+    note: 'Izoh',
+    amount: 'Miqdor',
+    type: 'Turi',
+    income: 'Kirim',
+    expense: 'Chiqim',
+    save: 'Saqlash',
+    cancel: 'Bekor qilish',
+    delete: 'O‘chirish',
+    completed: 'Bajarildi',
+    pending: 'Kutilmoqda',
+    noTasks: 'Hozircha vazifa yo‘q.',
+    noTransactions: 'Hozircha moliyaviy yozuvlar yo‘q.',
+    noGoals: 'Hozircha maqsadlar yo‘q.',
+    totalGoals: 'Maqsadlar',
+    target: 'Maqsad',
+    progress: 'Progress',
+    report: 'Oy xulosasi',
+    summary: 'Xulosa',
+    logout: 'Chiqish',
+    selectMonth: 'Oy tanlang',
+    language: 'Til',
+    languageUz: 'O‘zbek',
+    languageRu: 'Русский',
+    monthlyOverview: 'Oylik ko‘rinish',
+    focus: 'Diqqat',
+    topCategory: 'Eng ko‘p sarflangan toifa',
+    tasksDone: 'Bajarilgan vazifalar',
+    totalSaved: 'Jamg‘arma',
+    home: 'Uy',
+    work: 'Ish',
+    food: 'Ovqat',
+    transport: 'Transport',
+    health: 'Salomatlik',
+    other: 'Boshqa',
+    search: 'Qidirish',
+    localNote: 'Bu versiyada ma‘lumotlar mahalliy brauzerda saqlanadi. Server va JWT autentifikatsiyasi keyingi bosqichda ulanadi.'
+  },
+  ru: {
+    appName: 'Kunim',
+    dashboard: 'Обзор',
+    planner: 'Планы',
+    finance: 'Финансы',
+    goals: 'Цели',
+    reports: 'Отчёт',
+    settings: 'Настройки',
+    login: 'Войти',
+    signup: 'Регистрация',
+    email: 'Email',
+    password: 'Пароль',
+    phone: 'Номер телефона',
+    fullName: 'Ваше имя',
+    welcome: 'Личный план и финансы',
+    welcomeText: 'Планируйте день, контролируйте расходы и двигайтесь к целям.',
+    continueWithGoogle: 'Продолжить с Google',
+    continueWithPhone: 'Продолжить с телефоном',
+    noAccount: 'Нет аккаунта?',
+    haveAccount: 'Есть аккаунт?',
+    addTask: 'Добавить задачу',
+    addTransaction: 'Добавить запись',
+    addGoal: 'Добавить цель',
+    today: 'Сегодня',
+    monthIncome: 'Доход',
+    monthExpense: 'Расход',
+    balance: 'Остаток',
+    monthLabel: 'Месяц',
+    recent: 'Последние записи',
+    taskTitle: 'Название задачи',
+    date: 'Дата',
+    time: 'Время',
+    note: 'Описание',
+    amount: 'Сумма',
+    type: 'Тип',
+    income: 'Доход',
+    expense: 'Расход',
+    save: 'Сохранить',
+    cancel: 'Отмена',
+    delete: 'Удалить',
+    completed: 'Готово',
+    pending: 'В работе',
+    noTasks: 'Пока задач нет.',
+    noTransactions: 'Пока нет финансовых записей.',
+    noGoals: 'Пока нет целей.',
+    totalGoals: 'Цели',
+    target: 'Цель',
+    progress: 'Прогресс',
+    report: 'Итоги месяца',
+    summary: 'Итог',
+    logout: 'Выйти',
+    selectMonth: 'Выберите месяц',
+    language: 'Язык',
+    languageUz: 'O‘zbek',
+    languageRu: 'Русский',
+    monthlyOverview: 'Ежемесячный обзор',
+    focus: 'Фокус',
+    topCategory: 'Самая дорогая категория',
+    tasksDone: 'Выполненные задачи',
+    totalSaved: 'Накопления',
+    home: 'Дом',
+    work: 'Работа',
+    food: 'Еда',
+    transport: 'Транспорт',
+    health: 'Здоровье',
+    other: 'Другое',
+    search: 'Поиск',
+    localNote: 'В этой версии данные сохраняются локально в браузере. Серверная авторизация и JWT будут добавлены на следующем этапе.'
+  }
+};
+
+const money = (value) =>
+  `${new Intl.NumberFormat('uz-UZ', { maximumFractionDigits: 0 }).format(Number(value || 0))} so'm`;
+
+const formatDate = (date, locale) => {
+  if (!date) return '';
+  return new Intl.DateTimeFormat(locale === 'ru' ? 'ru-RU' : 'uz-UZ', {
+    day: 'numeric',
+    month: 'short'
+  }).format(new Date(`${date}T12:00:00`));
+};
+
+const defaultData = {
+  user: {
+    name: '',
+    email: '',
+    phone: '',
+    locale: 'uz'
+  },
+  auth: { loggedIn: false },
+  tasks: [],
+  transactions: [],
+  goals: []
+};
+
+function App() {
+  const [appData, setAppData] = useState(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+      return saved || defaultData;
+    } catch {
+      return defaultData;
+    }
+  });
+  const [authMode, setAuthMode] = useState('login');
+  const [form, setForm] = useState({ name: '', email: '', phone: '', password: '' });
+  const [view, setView] = useState('dashboard');
+  const [month, setMonth] = useState(new Date().toISOString().slice(0, 7));
+  const [search, setSearch] = useState('');
+  const [taskModal, setTaskModal] = useState(false);
+  const [transactionModal, setTransactionModal] = useState(false);
+  const [goalModal, setGoalModal] = useState(false);
+
+  const locale = appData.user.locale || 'uz';
+  const t = translations[locale];
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+  }, [appData]);
+
+  const monthTransactions = useMemo(() => {
+    return appData.transactions.filter((entry) => entry.date.startsWith(month));
+  }, [appData.transactions, month]);
+
+  const income = monthTransactions
+    .filter((entry) => entry.type === 'income')
+    .reduce((sum, entry) => sum + Number(entry.amount), 0);
+
+  const expense = monthTransactions
+    .filter((entry) => entry.type === 'expense')
+    .reduce((sum, entry) => sum + Number(entry.amount), 0);
+
+  const today = new Date().toISOString().slice(0, 10);
+  const todayTasks = appData.tasks.filter((task) => task.date === today);
+  const monthTasks = appData.tasks.filter((task) => task.date.startsWith(month));
+
+  const handleAuthSubmit = (event) => {
+    event.preventDefault();
+    const email = form.email.trim();
+    const password = form.password.trim();
+
+    if (!email || !password) return;
+
+    if (authMode === 'login') {
+      setAppData((prev) => ({
+        ...prev,
+        user: {
+          ...prev.user,
+          email,
+          name: prev.user.name || 'Foydalanuvchi',
+          // keep previous phone if exists
+          locale: prev.user.locale || 'uz'
+        },
+        auth: { loggedIn: true }
+      }));
+      return;
+    }
+
+    const name = form.name.trim() || 'Foydalanuvchi';
+    setAppData((prev) => ({
+      ...prev,
+      user: {
+        name,
+        email,
+        phone: form.phone.trim(),
+        locale: prev.user.locale || 'uz'
+      },
+      auth: { loggedIn: true }
+    }));
+  };
+
+  const addTask = (task) => {
+    const item = {
+      id: crypto.randomUUID(),
+      title: task.title.trim(),
+      date: task.date,
+      time: task.time || '',
+      done: false
+    };
+    setAppData((prev) => ({ ...prev, tasks: [...prev.tasks, item] }));
+  };
+
+  const addTransaction = (tx) => {
+    const item = {
+      id: crypto.randomUUID(),
+      title: tx.title.trim(),
+      amount: Number(tx.amount),
+      type: tx.type,
+      category: tx.category,
+      date: tx.date
+    };
+    setAppData((prev) => ({ ...prev, transactions: [...prev.transactions, item] }));
+  };
+
+  const addGoal = (goal) => {
+    const item = {
+      id: crypto.randomUUID(),
+      title: goal.title.trim(),
+      target: Number(goal.target),
+      current: Number(goal.current || 0)
+    };
+    setAppData((prev) => ({ ...prev, goals: [...prev.goals, item] }));
+  };
+
+  const toggleTask = (taskId) => {
+    setAppData((prev) => ({
+      ...prev,
+      tasks: prev.tasks.map((task) =>
+        task.id === taskId ? { ...task, done: !task.done } : task
+      )
+    }));
+  };
+
+  const removeTask = (taskId) => {
+    setAppData((prev) => ({ ...prev, tasks: prev.tasks.filter((task) => task.id !== taskId) }));
+  };
+
+  const removeTransaction = (id) => {
+    setAppData((prev) => ({ ...prev, transactions: prev.transactions.filter((entry) => entry.id !== id) }));
+  };
+
+  const removeGoal = (id) => {
+    setAppData((prev) => ({ ...prev, goals: prev.goals.filter((goal) => goal.id !== id) }));
+  };
+
+  const logout = () => {
+    setAppData((prev) => ({ ...prev, auth: { loggedIn: false } }));
+    setView('dashboard');
+  };
+
+  const totalBalance = income - expense;
+  const filteredTx = monthTransactions
+    .filter((entry) => `${entry.title} ${categories[entry.category]?.[locale] || ''}`.toLowerCase().includes(search.toLowerCase()))
+    .slice()
+    .reverse();
+
+  const topCategory = useMemo(() => {
+    const grouped = monthTransactions
+      .filter((entry) => entry.type === 'expense')
+      .reduce((acc, entry) => {
+        acc[entry.category] = (acc[entry.category] || 0) + Number(entry.amount);
+        return acc;
+      }, {});
+
+    const [key, value] = Object.entries(grouped).sort((a, b) => b[1] - a[1])[0] || [];
+    return key ? { key, value } : null;
+  }, [monthTransactions]);
+
+  if (!appData.auth.loggedIn) {
+    return (
+      <div className="auth-shell">
+        <div className="auth-card">
+          <div className="brand-block">
+            <div className="brand-mark">K</div>
+            <div>
+              <h1>{t.appName}</h1>
+              <p>{t.welcomeText}</p>
+            </div>
+          </div>
+
+          <div className="auth-header">
+            <div className="toggle-group">
+              <button className={authMode === 'login' ? 'active' : ''} onClick={() => setAuthMode('login')}>
+                {t.login}
+              </button>
+              <button className={authMode === 'register' ? 'active' : ''} onClick={() => setAuthMode('register')}>
+                {t.signup}
+              </button>
+            </div>
+            <select
+              value={locale}
+              onChange={(event) => {
+                const nextLocale = event.target.value;
+                setAppData((prev) => ({ ...prev, user: { ...prev.user, locale: nextLocale } }));
+              }}
+            >
+              <option value="uz">{t.languageUz}</option>
+              <option value="ru">{t.languageRu}</option>
+            </select>
+          </div>
+
+          <form className="auth-form" onSubmit={handleAuthSubmit}>
+            {authMode === 'register' && (
+              <label>
+                <span>{t.fullName}</span>
+                <input
+                  type="text"
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  placeholder={t.fullName}
+                />
+              </label>
+            )}
+
+            <label>
+              <span>{t.email}</span>
+              <input
+                type="email"
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
+                placeholder="name@example.com"
+                required
+              />
+            </label>
+
+            {authMode === 'register' && (
+              <label>
+                <span>{t.phone}</span>
+                <input
+                  type="tel"
+                  value={form.phone}
+                  onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                  placeholder="+998 90 123 45 67"
+                />
+              </label>
+            )}
+
+            <label>
+              <span>{t.password}</span>
+              <input
+                type="password"
+                value={form.password}
+                onChange={(e) => setForm({ ...form, password: e.target.value })}
+                placeholder="••••••••"
+                required
+              />
+            </label>
+
+            <button type="submit" className="primary-btn">
+              {authMode === 'login' ? t.login : t.signup}
+            </button>
+
+            <button type="button" className="secondary-btn">
+              <User size={16} /> {t.continueWithGoogle}
+            </button>
+            <button type="button" className="secondary-btn">
+              <CalendarDays size={16} /> {t.continueWithPhone}
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+  const navItems = [
+    { id: 'dashboard', label: t.dashboard, icon: Home },
+    { id: 'planner', label: t.planner, icon: CalendarDays },
+    { id: 'finance', label: t.finance, icon: Wallet },
+    { id: 'goals', label: t.goals, icon: Target },
+    { id: 'reports', label: t.reports, icon: FileText }
+  ];
+
+  return (
+    <div className="app-shell">
+      <aside className="sidebar">
+        <div className="brand-row">
+          <div className="brand-mark">K</div>
+          <div>
+            <div className="brand-name">{t.appName}</div>
+            <small>{t.welcome}</small>
+          </div>
+        </div>
+
+        <nav className="nav">
+          {navItems.map(({ id, label, icon: Icon }) => (
+            <button
+              key={id}
+              className={view === id ? 'nav-item active' : 'nav-item'}
+              onClick={() => setView(id)}
+            >
+              <Icon size={16} />
+              <span>{label}</span>
+            </button>
+          ))}
+          <button className={view === 'settings' ? 'nav-item active' : 'nav-item'} onClick={() => setView('settings')}>
+            <Settings size={16} />
+            <span>{t.settings}</span>
+          </button>
+        </nav>
+
+        <div className="profile-card">
+          <div className="avatar">{appData.user.name?.[0] || 'U'}</div>
+          <div>
+            <strong>{appData.user.name || 'User'}</strong>
+            <small>{appData.user.email || 'user@example.com'}</small>
+          </div>
+        </div>
+
+        <button className="logout-btn" onClick={logout}>
+          <LogOut size={15} /> {t.logout}
+        </button>
+      </aside>
+
+      <main className="main-panel">
+        <header className="topbar">
+          <div className="date-pill">
+            <CalendarDays size={16} />
+            {new Intl.DateTimeFormat(locale === 'ru' ? 'ru-RU' : 'uz-UZ', {
+              weekday: 'long',
+              day: 'numeric',
+              month: 'long'
+            }).format(new Date())}
+          </div>
+          <div className="top-actions">
+            <select
+              value={locale}
+              onChange={(event) => {
+                const nextLocale = event.target.value;
+                setAppData((prev) => ({ ...prev, user: { ...prev.user, locale: nextLocale } }));
+              }}
+            >
+              <option value="uz">{t.languageUz}</option>
+              <option value="ru">{t.languageRu}</option>
+            </select>
+            <button className="primary-btn" onClick={() => setTaskModal(true)}>
+              <Plus size={16} /> {t.addTask}
+            </button>
+          </div>
+        </header>
+
+        <div className="content-wrap">
+          {view === 'dashboard' && (
+            <>
+              <section className="row heading-row">
+                <div>
+                  <div className="eyebrow">{t.dashboard}</div>
+                  <h1>{t.welcome}</h1>
+                </div>
+                <button className="primary-btn" onClick={() => setTaskModal(true)}>
+                  <Plus size={16} /> {t.addTask}
+                </button>
+              </section>
+
+              <MonthPicker month={month} setMonth={setMonth} locale={locale} />
+
+              <section className="stats-grid">
+                <StatCard icon={<TrendingUp size={17} />} label={t.monthIncome} value={money(income)} tone="green" />
+                <StatCard icon={<TrendingDown size={17} />} label={t.monthExpense} value={money(expense)} tone="red" />
+                <StatCard icon={<CircleDollarSign size={17} />} label={t.balance} value={money(totalBalance)} tone="blue" />
+                <StatCard icon={<Check size={17} />} label={t.tasksDone} value={`${todayTasks.filter((item) => item.done).length}/${todayTasks.length || 0}`} tone="purple" />
+              </section>
+
+              <section className="two-col">
+                <div className="panel">
+                  <div className="panel-head">
+                    <h3>{t.today}</h3>
+                    <button className="mini-btn" onClick={() => setView('planner')}>{t.planner}</button>
+                  </div>
+                  <TaskList tasks={todayTasks} onToggle={toggleTask} onRemove={removeTask} locale={locale} t={t} />
+                </div>
+
+                <div className="panel">
+                  <div className="panel-head">
+                    <h3>{t.recent}</h3>
+                    <button className="mini-btn" onClick={() => setView('finance')}>{t.finance}</button>
+                  </div>
+                  <TxList transactions={monthTransactions.slice().reverse().slice(0, 5)} onRemove={removeTransaction} locale={locale} t={t} />
+                </div>
+              </section>
+
+              <ReportCard month={month} transactions={monthTransactions} tasks={monthTasks} locale={locale} t={t} topCategory={topCategory} />
+            </>
+          )}
+
+          {view === 'planner' && (
+            <>
+              <section className="row heading-row">
+                <div>
+                  <div className="eyebrow">{t.planner}</div>
+                  <h1>{t.planner}</h1>
+                </div>
+                <button className="primary-btn" onClick={() => setTaskModal(true)}>
+                  <Plus size={16} /> {t.addTask}
+                </button>
+              </section>
+
+              <MonthPicker month={month} setMonth={setMonth} locale={locale} />
+
+              <div className="panel">
+                <div className="panel-head">
+                  <h3>{t.planner}</h3>
+                  <span>{monthTasks.length} {t.planner}</span>
+                </div>
+                <TaskList tasks={monthTasks} onToggle={toggleTask} onRemove={removeTask} locale={locale} t={t} showDate />
+              </div>
+            </>
+          )}
+
+          {view === 'finance' && (
+            <>
+              <section className="row heading-row">
+                <div>
+                  <div className="eyebrow">{t.finance}</div>
+                  <h1>{t.finance}</h1>
+                </div>
+                <button className="primary-btn" onClick={() => setTransactionModal(true)}>
+                  <Plus size={16} /> {t.addTransaction}
+                </button>
+              </section>
+
+              <MonthPicker month={month} setMonth={setMonth} locale={locale} />
+
+              <section className="stats-grid three">
+                <StatCard icon={<TrendingUp size={17} />} label={t.monthIncome} value={money(income)} tone="green" />
+                <StatCard icon={<TrendingDown size={17} />} label={t.monthExpense} value={money(expense)} tone="red" />
+                <StatCard icon={<CircleDollarSign size={17} />} label={t.balance} value={money(totalBalance)} tone="blue" />
+              </section>
+
+              <div className="panel">
+                <div className="panel-head search-head">
+                  <h3>{t.recent}</h3>
+                  <div className="search-box">
+                    <Search size={14} />
+                    <input
+                      value={search}
+                      onChange={(event) => setSearch(event.target.value)}
+                      placeholder={t.search}
+                    />
+                  </div>
+                </div>
+                <TxList transactions={filteredTx} onRemove={removeTransaction} locale={locale} t={t} />
+              </div>
+            </>
+          )}
+
+          {view === 'goals' && (
+            <>
+              <section className="row heading-row">
+                <div>
+                  <div className="eyebrow">{t.goals}</div>
+                  <h1>{t.goals}</h1>
+                </div>
+                <button className="primary-btn" onClick={() => setGoalModal(true)}>
+                  <Plus size={16} /> {t.addGoal}
+                </button>
+              </section>
+
+              <div className="goal-grid">
+                {appData.goals.length ? (
+                  appData.goals.map((goal) => {
+                    const percent = goal.target ? Math.min(100, (goal.current / goal.target) * 100) : 0;
+                    return (
+                      <div className="panel goal-card" key={goal.id}>
+                        <div className="goal-top">
+                          <div className="goal-icon"><Target size={16} /></div>
+                          <button className="icon-btn" onClick={() => removeGoal(goal.id)}>
+                            <Trash2 size={14} />
+                          </button>
+                        </div>
+                        <h3>{goal.title}</h3>
+                        <div className="goal-amount">
+                          {money(goal.current)} / {money(goal.target)}
+                        </div>
+                        <div className="progress-track">
+                          <span style={{ width: `${percent}%` }} />
+                        </div>
+                        <div className="goal-bottom">
+                          <span>{t.progress}</span>
+                          <strong>{Math.round(percent)}%</strong>
+                        </div>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <div className="panel empty-panel">
+                    <div className="empty-icon"><Target size={18} /></div>
+                    <p>{t.noGoals}</p>
+                  </div>
+                )}
+              </div>
+            </>
+          )}
+
+          {view === 'reports' && (
+            <>
+              <section className="row heading-row">
+                <div>
+                  <div className="eyebrow">{t.reports}</div>
+                  <h1>{t.report}</h1>
+                </div>
+              </section>
+
+              <MonthPicker month={month} setMonth={setMonth} locale={locale} />
+              <ReportCard month={month} transactions={monthTransactions} tasks={monthTasks} locale={locale} t={t} topCategory={topCategory} />
+            </>
+          )}
+
+          {view === 'settings' && (
+            <>
+              <section className="row heading-row">
+                <div>
+                  <div className="eyebrow">{t.settings}</div>
+                  <h1>{t.settings}</h1>
+                </div>
+              </section>
+
+              <div className="panel settings-panel">
+                <div>
+                  <strong>{t.language}</strong>
+                  <small>{t.languageUz} / {t.languageRu}</small>
+                </div>
+                <select
+                  value={locale}
+                  onChange={(event) => {
+                    const nextLocale = event.target.value;
+                    setAppData((prev) => ({ ...prev, user: { ...prev.user, locale: nextLocale } }));
+                  }}
+                >
+                  <option value="uz">{t.languageUz}</option>
+                  <option value="ru">{t.languageRu}</option>
+                </select>
+              </div>
+
+              <div className="panel note-box">
+                <Sparkles size={16} />
+                <p>{t.localNote}</p>
+              </div>
+            </>
+          )}
+        </div>
+      </main>
+
+      {taskModal && (
+        <TaskModal
+          onClose={() => setTaskModal(false)}
+          onSave={addTask}
+          t={t}
+          locale={locale}
+        />
+      )}
+
+      {transactionModal && (
+        <TransactionModal
+          onClose={() => setTransactionModal(false)}
+          onSave={addTransaction}
+          t={t}
+          locale={locale}
+        />
+      )}
+
+      {goalModal && (
+        <GoalModal
+          onClose={() => setGoalModal(false)}
+          onSave={addGoal}
+          t={t}
+        />
+      )}
+    </div>
+  );
+}
+
+function MonthPicker({ month, setMonth, locale }) {
+  const text = new Intl.DateTimeFormat(locale === 'ru' ? 'ru-RU' : 'uz-UZ', {
+    month: 'long',
+    year: 'numeric'
+  }).format(new Date(`${month}-15T12:00:00`));
+
+  const changeMonth = (shift) => {
+    const date = new Date(`${month}-15T12:00:00`);
+    date.setMonth(date.getMonth() + shift);
+    setMonth(date.toISOString().slice(0, 7));
+  };
+
+  return (
+    <div className="month-switcher">
+      <button className="icon-btn" onClick={() => changeMonth(-1)}><ChevronLeft size={16} /></button>
+      <strong>{text}</strong>
+      <button className="icon-btn" onClick={() => changeMonth(1)}><ChevronRight size={16} /></button>
+      <input type="month" value={month} onChange={(e) => setMonth(e.target.value)} />
+    </div>
+  );
+}
+
+function StatCard({ icon, label, value, tone }) {
+  return (
+    <div className="stat-card">
+      <div className={`stat-icon ${tone}`}>{icon}</div>
+      <div className="stat-label">{label}</div>
+      <strong>{value}</strong>
+    </div>
+  );
+}
+
+function TaskList({ tasks, onToggle, onRemove, locale, t, showDate = false }) {
+  if (!tasks.length) {
+    return (
+      <div className="empty-box">
+        <div className="empty-icon"><CalendarDays size={16} /></div>
+        <p>{t.noTasks}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="stack-list">
+      {tasks.map((task) => (
+        <div className={`stack-row ${task.done ? 'done' : ''}`} key={task.id}>
+          <button className={`check-btn ${task.done ? 'done' : ''}`} onClick={() => onToggle(task.id)}>
+            {task.done && <Check size={12} />}
+          </button>
+          <div className="stack-main">
+            <strong>{task.title}</strong>
+            <small>
+              {showDate ? formatDate(task.date, locale) : ''}
+              {showDate && task.time ? ' · ' : ''}
+              {task.time || ''}
+            </small>
+          </div>
+          <span className="badge">{task.done ? t.completed : t.pending}</span>
+          <button className="icon-btn small" onClick={() => onRemove(task.id)}>
+            <Trash2 size={14} />
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function TxList({ transactions, onRemove, locale, t }) {
+  if (!transactions.length) {
+    return (
+      <div className="empty-box">
+        <div className="empty-icon"><Wallet size={16} /></div>
+        <p>{t.noTransactions}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="stack-list">
+      {transactions.map((entry) => (
+        <div className="stack-row" key={entry.id}>
+          <div className={`tx-icon ${entry.type}`}>
+            {entry.type === 'income' ? <TrendingUp size={14} /> : <TrendingDown size={14} />}
+          </div>
+          <div className="stack-main">
+            <strong>{entry.title}</strong>
+            <small>{formatDate(entry.date, locale)} · {categories[entry.category]?.[locale] || entry.category}</small>
+          </div>
+          <strong className={`money ${entry.type}`}>{entry.type === 'income' ? '+' : '-'}{money(entry.amount)}</strong>
+          <button className="icon-btn small" onClick={() => onRemove(entry.id)}>
+            <Trash2 size={14} />
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ReportCard({ month, transactions, tasks, locale, t, topCategory }) {
+  const totalIncome = transactions
+    .filter((entry) => entry.type === 'income')
+    .reduce((sum, item) => sum + Number(item.amount), 0);
+
+  const totalExpense = transactions
+    .filter((entry) => entry.type === 'expense')
+    .reduce((sum, item) => sum + Number(item.amount), 0);
+
+  const doneCount = tasks.filter((task) => task.done).length;
+  const monthText = new Intl.DateTimeFormat(locale === 'ru' ? 'ru-RU' : 'uz-UZ', {
+    month: 'long',
+    year: 'numeric'
+  }).format(new Date(`${month}-15T12:00:00`));
+
+  return (
+    <div className="panel report-box">
+      <div className="report-head">
+        <div className="spark"><Sparkles size={16} /></div>
+        <div>
+          <h3>{t.report}</h3>
+          <small>{monthText}</small>
+        </div>
+      </div>
+
+      <div className="report-grid">
+        <div>
+          <span>{t.balance}</span>
+          <strong>{money(totalIncome - totalExpense)}</strong>
+        </div>
+        <div>
+          <span>{t.tasksDone}</span>
+          <strong>{doneCount}/{tasks.length}</strong>
+        </div>
+        <div>
+          <span>{t.topCategory}</span>
+          <strong>
+            {topCategory ? `${categories[topCategory.key]?.[locale] || topCategory.key} · ${money(topCategory.value)}` : '—'}
+          </strong>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function TaskModal({ onClose, onSave, t, locale }) {
+  const [task, setTask] = useState({ title: '', date: new Date().toISOString().slice(0, 10), time: '' });
+
+  const submit = (event) => {
+    event.preventDefault();
+    onSave(task);
+    onClose();
+  };
+
+  return (
+    <div className="modal-backdrop" onClick={(event) => event.target === event.currentTarget && onClose()}>
+      <form className="modal" onSubmit={submit}>
+        <div className="modal-head">
+          <h3>{t.addTask}</h3>
+          <button type="button" className="icon-btn" onClick={onClose}><Trash2 size={14} /></button>
+        </div>
+
+        <label>
+          <span>{t.taskTitle}</span>
+          <input value={task.title} onChange={(e) => setTask({ ...task, title: e.target.value })} required />
+        </label>
+
+        <div className="two-fields">
+          <label>
+            <span>{t.date}</span>
+            <input type="date" value={task.date} onChange={(e) => setTask({ ...task, date: e.target.value })} required />
+          </label>
+          <label>
+            <span>{t.time}</span>
+            <input type="time" value={task.time} onChange={(e) => setTask({ ...task, time: e.target.value })} />
+          </label>
+        </div>
+
+        <div className="modal-actions">
+          <button type="button" className="secondary-btn" onClick={onClose}>{t.cancel}</button>
+          <button className="primary-btn" type="submit">{t.save}</button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+function TransactionModal({ onClose, onSave, t, locale }) {
+  const [transaction, setTransaction] = useState({
+    title: '',
+    amount: '',
+    category: 'food',
+    type: 'expense',
+    date: new Date().toISOString().slice(0, 10)
+  });
+
+  const submit = (event) => {
+    event.preventDefault();
+    onSave(transaction);
+    onClose();
+  };
+
+  return (
+    <div className="modal-backdrop" onClick={(event) => event.target === event.currentTarget && onClose()}>
+      <form className="modal" onSubmit={submit}>
+        <div className="modal-head">
+          <h3>{t.addTransaction}</h3>
+          <button type="button" className="icon-btn" onClick={onClose}><Trash2 size={14} /></button>
+        </div>
+
+        <label>
+          <span>{t.note}</span>
+          <input value={transaction.title} onChange={(e) => setTransaction({ ...transaction, title: e.target.value })} required />
+        </label>
+
+        <div className="two-fields">
+          <label>
+            <span>{t.amount}</span>
+            <input type="number" min="1" value={transaction.amount} onChange={(e) => setTransaction({ ...transaction, amount: e.target.value })} required />
+          </label>
+          <label>
+            <span>{t.date}</span>
+            <input type="date" value={transaction.date} onChange={(e) => setTransaction({ ...transaction, date: e.target.value })} required />
+          </label>
+        </div>
+
+        <div className="two-fields">
+          <label>
+            <span>{t.type}</span>
+            <select value={transaction.type} onChange={(e) => setTransaction({ ...transaction, type: e.target.value })}>
+              <option value="expense">{t.expense}</option>
+              <option value="income">{t.income}</option>
+            </select>
+          </label>
+          <label>
+            <span>{t.finance}</span>
+            <select value={transaction.category} onChange={(e) => setTransaction({ ...transaction, category: e.target.value })}>
+              {Object.entries(categories).map(([key, value]) => (
+                <option key={key} value={key}>{value[locale]}</option>
+              ))}
+            </select>
+          </label>
+        </div>
+
+        <div className="modal-actions">
+          <button type="button" className="secondary-btn" onClick={onClose}>{t.cancel}</button>
+          <button className="primary-btn" type="submit">{t.save}</button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+function GoalModal({ onClose, onSave, t }) {
+  const [goal, setGoal] = useState({ title: '', target: '', current: '0' });
+
+  const submit = (event) => {
+    event.preventDefault();
+    onSave(goal);
+    onClose();
+  };
+
+  return (
+    <div className="modal-backdrop" onClick={(event) => event.target === event.currentTarget && onClose()}>
+      <form className="modal" onSubmit={submit}>
+        <div className="modal-head">
+          <h3>{t.addGoal}</h3>
+          <button type="button" className="icon-btn" onClick={onClose}><Trash2 size={14} /></button>
+        </div>
+
+        <label>
+          <span>{t.goalTitle || t.goals}</span>
+          <input value={goal.title} onChange={(e) => setGoal({ ...goal, title: e.target.value })} required />
+        </label>
+
+        <div className="two-fields">
+          <label>
+            <span>{t.target}</span>
+            <input type="number" min="1" value={goal.target} onChange={(e) => setGoal({ ...goal, target: e.target.value })} required />
+          </label>
+          <label>
+            <span>{t.progress}</span>
+            <input type="number" min="0" value={goal.current} onChange={(e) => setGoal({ ...goal, current: e.target.value })} />
+          </label>
+        </div>
+
+        <div className="modal-actions">
+          <button type="button" className="secondary-btn" onClick={onClose}>{t.cancel}</button>
+          <button className="primary-btn" type="submit">{t.save}</button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+export default App;
