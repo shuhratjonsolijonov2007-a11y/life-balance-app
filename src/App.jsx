@@ -1,0 +1,687 @@
+import { useEffect, useMemo, useState } from 'react';
+import {
+  CalendarDays,
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  CircleDollarSign,
+  FileText,
+  Home,
+  LogOut,
+  Plus,
+  Search,
+  Settings,
+  Sparkles,
+  Target,
+  Trash2,
+  TrendingDown,
+  TrendingUp,
+  User,
+  Wallet
+} from 'lucide-react';
+
+const STORAGE_KEY = 'kunim-real-app-v1';
+const CATEGORIES = {
+  transport: { uz: 'Transport', ru: 'Транспорт' },
+  food: { uz: 'Ovqat', ru: 'Еда' },
+  home: { uz: 'Uy', ru: 'Дом' },
+  work: { uz: 'Ish', ru: 'Работа' },
+  health: { uz: 'Salomatlik', ru: 'Здоровье' },
+  other: { uz: 'Boshqa', ru: 'Другое' }
+};
+
+const translations = {
+  uz: {
+    appName: 'Kunim',
+    dashboard: 'Umumiy',
+    planner: 'Rejalar',
+    finance: 'Moliya',
+    goals: 'Maqsadlar',
+    reports: 'Hisobot',
+    settings: 'Sozlamalar',
+    login: 'Kirish',
+    signup: 'Ro‘yxatdan o‘tish',
+    email: 'Email',
+    password: 'Parol',
+    phone: 'Telefon raqami',
+    fullName: 'To‘liq ismingiz',
+    welcome: 'Shaxsiy reja va moliya',
+    welcomeText: 'Kunni rejalashtiring, xarajatlarni kuzating va maqsadlarga erishing.',
+    continueWithGoogle: 'Google bilan davom etish',
+    continueWithPhone: 'Telefon bilan davom etish',
+    addTask: 'Vazifa qo‘shish',
+    addTransaction: 'Yozuv qo‘shish',
+    addGoal: 'Maqsad qo‘shish',
+    today: 'Bugun',
+    monthIncome: 'Kirim',
+    monthExpense: 'Chiqim',
+    balance: 'Qoldiq',
+    recent: 'So‘nggi yozuvlar',
+    taskTitle: 'Vazifa nomi',
+    date: 'Sana',
+    time: 'Vaqt',
+    note: 'Izoh',
+    amount: 'Miqdor',
+    type: 'Turi',
+    income: 'Kirim',
+    expense: 'Chiqim',
+    save: 'Saqlash',
+    cancel: 'Bekor qilish',
+    delete: 'O‘chirish',
+    completed: 'Bajarildi',
+    pending: 'Kutilmoqda',
+    noTasks: 'Hozircha vazifa yo‘q.',
+    noTransactions: 'Hozircha moliyaviy yozuvlar yo‘q.',
+    noGoals: 'Hozircha maqsadlar yo‘q.',
+    totalGoals: 'Maqsadlar',
+    target: 'Maqsad',
+    progress: 'Progress',
+    report: 'Oy xulosasi',
+    logout: 'Chiqish',
+    selectMonth: 'Oy tanlang',
+    language: 'Til',
+    languageUz: 'O‘zbek',
+    languageRu: 'Русский',
+    topCategory: 'Eng ko‘p sarflangan toifa',
+    tasksDone: 'Bajarilgan vazifalar',
+    totalSaved: 'Jamg‘arma',
+    search: 'Qidirish',
+    localNote: 'Bu versiyada ma’lumotlar mahalliy brauzerda saqlanadi. Server va auth keyingi bosqichda ulanadi.'
+  },
+  ru: {
+    appName: 'Kunim',
+    dashboard: 'Обзор',
+    planner: 'Планы',
+    finance: 'Финансы',
+    goals: 'Цели',
+    reports: 'Отчёт',
+    settings: 'Настройки',
+    login: 'Войти',
+    signup: 'Регистрация',
+    email: 'Email',
+    password: 'Пароль',
+    phone: 'Номер телефона',
+    fullName: 'Ваше имя',
+    welcome: 'Личный план и финансы',
+    welcomeText: 'Планируйте день, контролируйте расходы и идите к целям.',
+    continueWithGoogle: 'Продолжить с Google',
+    continueWithPhone: 'Продолжить с телефоном',
+    addTask: 'Добавить задачу',
+    addTransaction: 'Добавить запись',
+    addGoal: 'Добавить цель',
+    today: 'Сегодня',
+    monthIncome: 'Доход',
+    monthExpense: 'Расход',
+    balance: 'Остаток',
+    recent: 'Последние записи',
+    taskTitle: 'Название задачи',
+    date: 'Дата',
+    time: 'Время',
+    note: 'Описание',
+    amount: 'Сумма',
+    type: 'Тип',
+    income: 'Доход',
+    expense: 'Расход',
+    save: 'Сохранить',
+    cancel: 'Отмена',
+    delete: 'Удалить',
+    completed: 'Готово',
+    pending: 'В работе',
+    noTasks: 'Пока задач нет.',
+    noTransactions: 'Пока нет финансовых записей.',
+    noGoals: 'Пока нет целей.',
+    totalGoals: 'Цели',
+    target: 'Цель',
+    progress: 'Прогресс',
+    report: 'Итоги месяца',
+    logout: 'Выйти',
+    selectMonth: 'Выберите месяц',
+    language: 'Язык',
+    languageUz: 'O‘zbek',
+    languageRu: 'Русский',
+    topCategory: 'Самая дорогая категория',
+    tasksDone: 'Выполненные задачи',
+    totalSaved: 'Накопления',
+    search: 'Поиск',
+    localNote: 'В этой версии данные сохраняются локально в браузере. Серверная авторизация будет добавлена позже.'
+  }
+};
+
+const money = (value) => `${new Intl.NumberFormat('uz-UZ', { maximumFractionDigits: 0 }).format(Number(value || 0))} so'm`;
+const formatDate = (date, locale) => {
+  if (!date) return '';
+  return new Intl.DateTimeFormat(locale === 'ru' ? 'ru-RU' : 'uz-UZ', {
+    day: 'numeric',
+    month: 'short'
+  }).format(new Date(`${date}T12:00:00`));
+};
+
+const defaultData = {
+  user: { name: '', email: '', phone: '', locale: 'uz' },
+  auth: { loggedIn: false },
+  tasks: [],
+  transactions: [],
+  goals: []
+};
+
+export default function App() {
+  const [appData, setAppData] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null') || defaultData;
+    } catch {
+      return defaultData;
+    }
+  });
+  const [authMode, setAuthMode] = useState('login');
+  const [form, setForm] = useState({ name: '', email: '', phone: '', password: '' });
+  const [view, setView] = useState('dashboard');
+  const [month, setMonth] = useState(new Date().toISOString().slice(0, 7));
+  const [search, setSearch] = useState('');
+  const [taskModal, setTaskModal] = useState(false);
+  const [transactionModal, setTransactionModal] = useState(false);
+  const [goalModal, setGoalModal] = useState(false);
+
+  const locale = appData.user.locale || 'uz';
+  const t = translations[locale];
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+  }, [appData]);
+
+  const monthTransactions = useMemo(() => appData.transactions.filter((entry) => entry.date.startsWith(month)), [appData.transactions, month]);
+  const income = monthTransactions.filter((entry) => entry.type === 'income').reduce((sum, item) => sum + Number(item.amount), 0);
+  const expense = monthTransactions.filter((entry) => entry.type === 'expense').reduce((sum, item) => sum + Number(item.amount), 0);
+  const today = new Date().toISOString().slice(0, 10);
+  const todayTasks = appData.tasks.filter((task) => task.date === today);
+  const monthTasks = appData.tasks.filter((task) => task.date.startsWith(month));
+  const totalBalance = income - expense;
+
+  const filteredTx = monthTransactions
+    .filter((entry) => `${entry.title} ${CATEGORIES[entry.category]?.[locale] || ''}`.toLowerCase().includes(search.toLowerCase()))
+    .slice()
+    .reverse();
+
+  const topCategory = useMemo(() => {
+    const grouped = monthTransactions
+      .filter((entry) => entry.type === 'expense')
+      .reduce((acc, entry) => {
+        acc[entry.category] = (acc[entry.category] || 0) + Number(entry.amount);
+        return acc;
+      }, {});
+
+    const [key, value] = Object.entries(grouped).sort((a, b) => b[1] - a[1])[0] || [];
+    return key ? { key, value } : null;
+  }, [monthTransactions]);
+
+  const submitAuth = (event) => {
+    event.preventDefault();
+    if (!form.email.trim() || !form.password.trim()) return;
+
+    if (authMode === 'login') {
+      setAppData((prev) => ({
+        ...prev,
+        user: { ...prev.user, email: form.email.trim(), locale: prev.user.locale || 'uz' },
+        auth: { loggedIn: true }
+      }));
+      return;
+    }
+
+    setAppData((prev) => ({
+      ...prev,
+      user: {
+        name: form.name.trim() || 'Foydalanuvchi',
+        email: form.email.trim(),
+        phone: form.phone.trim(),
+        locale: prev.user.locale || 'uz'
+      },
+      auth: { loggedIn: true }
+    }));
+  };
+
+  const addTask = (task) => {
+    const item = {
+      id: crypto.randomUUID(),
+      title: task.title.trim(),
+      date: task.date,
+      time: task.time || '',
+      done: false
+    };
+    setAppData((prev) => ({ ...prev, tasks: [...prev.tasks, item] }));
+  };
+
+  const addTransaction = (entry) => {
+    const item = {
+      id: crypto.randomUUID(),
+      title: entry.title.trim(),
+      amount: Number(entry.amount),
+      type: entry.type,
+      category: entry.category,
+      date: entry.date
+    };
+    setAppData((prev) => ({ ...prev, transactions: [...prev.transactions, item] }));
+  };
+
+  const addGoal = (goal) => {
+    const item = {
+      id: crypto.randomUUID(),
+      title: goal.title.trim(),
+      target: Number(goal.target),
+      current: Number(goal.current || 0)
+    };
+    setAppData((prev) => ({ ...prev, goals: [...prev.goals, item] }));
+  };
+
+  const toggleTask = (taskId) => {
+    setAppData((prev) => ({
+      ...prev,
+      tasks: prev.tasks.map((task) => task.id === taskId ? { ...task, done: !task.done } : task)
+    }));
+  };
+
+  const removeTask = (taskId) => setAppData((prev) => ({ ...prev, tasks: prev.tasks.filter((task) => task.id !== taskId) }));
+  const removeTransaction = (id) => setAppData((prev) => ({ ...prev, transactions: prev.transactions.filter((entry) => entry.id !== id) }));
+  const removeGoal = (id) => setAppData((prev) => ({ ...prev, goals: prev.goals.filter((goal) => goal.id !== id) }));
+
+  const logout = () => {
+    setAppData((prev) => ({ ...prev, auth: { loggedIn: false } }));
+    setView('dashboard');
+  };
+
+  if (!appData.auth.loggedIn) {
+    return (
+      <div className="auth-shell">
+        <div className="auth-card">
+          <div className="brand-block">
+            <div className="brand-mark">K</div>
+            <div>
+              <h1>{translations[locale].appName}</h1>
+              <p>{translations[locale].welcomeText}</p>
+            </div>
+          </div>
+
+          <div className="auth-header">
+            <div className="toggle-group">
+              <button className={authMode === 'login' ? 'active' : ''} onClick={() => setAuthMode('login')}>{translations[locale].login}</button>
+              <button className={authMode === 'register' ? 'active' : ''} onClick={() => setAuthMode('register')}>{translations[locale].signup}</button>
+            </div>
+            <select value={locale} onChange={(event) => setAppData((prev) => ({ ...prev, user: { ...prev.user, locale: event.target.value } }))}>
+              <option value="uz">{translations[locale].languageUz}</option>
+              <option value="ru">{translations[locale].languageRu}</option>
+            </select>
+          </div>
+
+          <form className="auth-form" onSubmit={submitAuth}>
+            {authMode === 'register' && (
+              <label>
+                <span>{translations[locale].fullName}</span>
+                <input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder={translations[locale].fullName} />
+              </label>
+            )}
+            <label>
+              <span>{translations[locale].email}</span>
+              <input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="name@example.com" required />
+            </label>
+            {authMode === 'register' && (
+              <label>
+                <span>{translations[locale].phone}</span>
+                <input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder="+998 90 123 45 67" />
+              </label>
+            )}
+            <label>
+              <span>{translations[locale].password}</span>
+              <input type="password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} placeholder="••••••••" required />
+            </label>
+            <button type="submit" className="primary-btn">
+              {authMode === 'login' ? translations[locale].login : translations[locale].signup}
+            </button>
+            <button type="button" className="secondary-btn"><User size={16} /> {translations[locale].continueWithGoogle}</button>
+            <button type="button" className="secondary-btn"><CalendarDays size={16} /> {translations[locale].continueWithPhone}</button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+  const navItems = [
+    { id: 'dashboard', label: t.dashboard, icon: Home },
+    { id: 'planner', label: t.planner, icon: CalendarDays },
+    { id: 'finance', label: t.finance, icon: Wallet },
+    { id: 'goals', label: t.goals, icon: Target },
+    { id: 'reports', label: t.reports, icon: FileText }
+  ];
+
+  return (
+    <div className="app-shell">
+      <aside className="sidebar">
+        <div className="brand-row">
+          <div className="brand-mark">K</div>
+          <div>
+            <div className="brand-name">{t.appName}</div>
+            <small>{t.welcome}</small>
+          </div>
+        </div>
+
+        <nav className="nav">
+          {navItems.map(({ id, label, icon: Icon }) => (
+            <button key={id} className={view === id ? 'nav-item active' : 'nav-item'} onClick={() => setView(id)}>
+              <Icon size={16} />
+              <span>{label}</span>
+            </button>
+          ))}
+          <button className={view === 'settings' ? 'nav-item active' : 'nav-item'} onClick={() => setView('settings')}>
+            <Settings size={16} />
+            <span>{t.settings}</span>
+          </button>
+        </nav>
+
+        <div className="profile-card">
+          <div className="avatar">{appData.user.name?.[0] || 'U'}</div>
+          <div>
+            <strong>{appData.user.name || 'User'}</strong>
+            <small>{appData.user.email || 'user@example.com'}</small>
+          </div>
+        </div>
+
+        <button className="logout-btn" onClick={logout}><LogOut size={15} /> {t.logout}</button>
+      </aside>
+
+      <main className="main-panel">
+        <header className="topbar">
+          <div className="date-pill"><CalendarDays size={16} />{new Intl.DateTimeFormat(locale === 'ru' ? 'ru-RU' : 'uz-UZ', { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date())}</div>
+          <div className="top-actions">
+            <select value={locale} onChange={(event) => setAppData((prev) => ({ ...prev, user: { ...prev.user, locale: event.target.value } }))}>
+              <option value="uz">{t.languageUz}</option>
+              <option value="ru">{t.languageRu}</option>
+            </select>
+            <button className="primary-btn" onClick={() => setTaskModal(true)}><Plus size={16} /> {t.addTask}</button>
+          </div>
+        </header>
+
+        <div className="content-wrap">
+          {view === 'dashboard' && (
+            <>
+              <section className="row heading-row">
+                <div>
+                  <div className="eyebrow">{t.dashboard}</div>
+                  <h1>{t.welcome}</h1>
+                </div>
+                <button className="primary-btn" onClick={() => setTaskModal(true)}><Plus size={16} /> {t.addTask}</button>
+              </section>
+
+              <MonthPicker month={month} setMonth={setMonth} locale={locale} />
+
+              <section className="stats-grid">
+                <StatCard icon={<TrendingUp size={17} />} label={t.monthIncome} value={money(income)} tone="green" />
+                <StatCard icon={<TrendingDown size={17} />} label={t.monthExpense} value={money(expense)} tone="red" />
+                <StatCard icon={<CircleDollarSign size={17} />} label={t.balance} value={money(totalBalance)} tone="blue" />
+                <StatCard icon={<Check size={17} />} label={t.tasksDone} value={`${todayTasks.filter((item) => item.done).length}/${todayTasks.length || 0}`} tone="purple" />
+              </section>
+
+              <section className="two-col">
+                <div className="panel">
+                  <div className="panel-head">
+                    <h3>{t.today}</h3>
+                    <button className="mini-btn" onClick={() => setView('planner')}>{t.planner}</button>
+                  </div>
+                  <TaskList tasks={todayTasks} onToggle={toggleTask} onRemove={removeTask} locale={locale} t={t} />
+                </div>
+                <div className="panel">
+                  <div className="panel-head">
+                    <h3>{t.recent}</h3>
+                    <button className="mini-btn" onClick={() => setView('finance')}>{t.finance}</button>
+                  </div>
+                  <TxList transactions={monthTransactions.slice().reverse().slice(0, 5)} onRemove={removeTransaction} locale={locale} t={t} />
+                </div>
+              </section>
+
+              <ReportCard month={month} transactions={monthTransactions} tasks={monthTasks} locale={locale} t={t} topCategory={topCategory} />
+            </>
+          )}
+
+          {view === 'planner' && (
+            <>
+              <section className="row heading-row"><div><div className="eyebrow">{t.planner}</div><h1>{t.planner}</h1></div><button className="primary-btn" onClick={() => setTaskModal(true)}><Plus size={16} /> {t.addTask}</button></section>
+              <MonthPicker month={month} setMonth={setMonth} locale={locale} />
+              <div className="panel">
+                <div className="panel-head"><h3>{t.planner}</h3><span>{monthTasks.length} {t.planner}</span></div>
+                <TaskList tasks={monthTasks} onToggle={toggleTask} onRemove={removeTask} locale={locale} t={t} showDate />
+              </div>
+            </>
+          )}
+
+          {view === 'finance' && (
+            <>
+              <section className="row heading-row"><div><div className="eyebrow">{t.finance}</div><h1>{t.finance}</h1></div><button className="primary-btn" onClick={() => setTransactionModal(true)}><Plus size={16} /> {t.addTransaction}</button></section>
+              <MonthPicker month={month} setMonth={setMonth} locale={locale} />
+              <section className="stats-grid three">
+                <StatCard icon={<TrendingUp size={17} />} label={t.monthIncome} value={money(income)} tone="green" />
+                <StatCard icon={<TrendingDown size={17} />} label={t.monthExpense} value={money(expense)} tone="red" />
+                <StatCard icon={<CircleDollarSign size={17} />} label={t.balance} value={money(totalBalance)} tone="blue" />
+              </section>
+              <div className="panel">
+                <div className="panel-head search-head"><h3>{t.recent}</h3><div className="search-box"><Search size={14} /><input value={search} onChange={(e) => setSearch(e.target.value)} placeholder={t.search} /></div></div>
+                <TxList transactions={filteredTx} onRemove={removeTransaction} locale={locale} t={t} />
+              </div>
+            </>
+          )}
+
+          {view === 'goals' && (
+            <>
+              <section className="row heading-row"><div><div className="eyebrow">{t.goals}</div><h1>{t.goals}</h1></div><button className="primary-btn" onClick={() => setGoalModal(true)}><Plus size={16} /> {t.addGoal}</button></section>
+              <div className="goal-grid">
+                {appData.goals.length ? appData.goals.map((goal) => {
+                  const percent = goal.target ? Math.min(100, (goal.current / goal.target) * 100) : 0;
+                  return (
+                    <div className="panel goal-card" key={goal.id}>
+                      <div className="goal-top"><div className="goal-icon"><Target size={16} /></div><button className="icon-btn" onClick={() => removeGoal(goal.id)}><Trash2 size={14} /></button></div>
+                      <h3>{goal.title}</h3>
+                      <div className="goal-amount">{money(goal.current)} / {money(goal.target)}</div>
+                      <div className="progress-track"><span style={{ width: `${percent}%` }} /></div>
+                      <div className="goal-bottom"><span>{t.progress}</span><strong>{Math.round(percent)}%</strong></div>
+                    </div>
+                  );
+                }) : <div className="panel empty-panel"><div className="empty-icon"><Target size={18} /></div><p>{t.noGoals}</p></div>}
+              </div>
+            </>
+          )}
+
+          {view === 'reports' && (
+            <>
+              <section className="row heading-row"><div><div className="eyebrow">{t.reports}</div><h1>{t.report}</h1></div></section>
+              <MonthPicker month={month} setMonth={setMonth} locale={locale} />
+              <ReportCard month={month} transactions={monthTransactions} tasks={monthTasks} locale={locale} t={t} topCategory={topCategory} />
+            </>
+          )}
+
+          {view === 'settings' && (
+            <>
+              <section className="row heading-row"><div><div className="eyebrow">{t.settings}</div><h1>{t.settings}</h1></div></section>
+              <div className="panel settings-panel">
+                <div><strong>{t.language}</strong><small>{t.languageUz} / {t.languageRu}</small></div>
+                <select value={locale} onChange={(event) => setAppData((prev) => ({ ...prev, user: { ...prev.user, locale: event.target.value } }))}>
+                  <option value="uz">{t.languageUz}</option>
+                  <option value="ru">{t.languageRu}</option>
+                </select>
+              </div>
+              <div className="panel note-box"><Sparkles size={16} /><p>{t.localNote}</p></div>
+            </>
+          )}
+        </div>
+      </main>
+
+      {taskModal && <TaskModal onClose={() => setTaskModal(false)} onSave={addTask} t={t} />}
+      {transactionModal && <TransactionModal onClose={() => setTransactionModal(false)} onSave={addTransaction} t={t} locale={locale} />}
+      {goalModal && <GoalModal onClose={() => setGoalModal(false)} onSave={addGoal} t={t} />}
+    </div>
+  );
+}
+
+function StatCard({ icon, label, value, tone }) {
+  return (
+    <div className="stat-card">
+      <div className={`stat-icon ${tone}`}>{icon}</div>
+      <div className="stat-label">{label}</div>
+      <strong>{value}</strong>
+    </div>
+  );
+}
+
+function MonthPicker({ month, setMonth, locale }) {
+  const text = new Intl.DateTimeFormat(locale === 'ru' ? 'ru-RU' : 'uz-UZ', { month: 'long', year: 'numeric' }).format(new Date(`${month}-15T12:00:00`));
+  const changeMonth = (shift) => {
+    const date = new Date(`${month}-15T12:00:00`);
+    date.setMonth(date.getMonth() + shift);
+    setMonth(date.toISOString().slice(0, 7));
+  };
+
+  return (
+    <div className="month-switcher">
+      <button className="icon-btn" onClick={() => changeMonth(-1)}><ChevronLeft size={16} /></button>
+      <strong>{text}</strong>
+      <button className="icon-btn" onClick={() => changeMonth(1)}><ChevronRight size={16} /></button>
+      <input type="month" value={month} onChange={(e) => setMonth(e.target.value)} />
+    </div>
+  );
+}
+
+function TaskList({ tasks, onToggle, onRemove, locale, t, showDate = false }) {
+  if (!tasks.length) return <div className="empty-box"><div className="empty-icon"><CalendarDays size={16} /></div><p>{t.noTasks}</p></div>;
+
+  return (
+    <div className="stack-list">
+      {tasks.map((task) => (
+        <div className={`stack-row ${task.done ? 'done' : ''}`} key={task.id}>
+          <button className={`check-btn ${task.done ? 'done' : ''}`} onClick={() => onToggle(task.id)}>{task.done && <Check size={12} />}</button>
+          <div className="stack-main">
+            <strong>{task.title}</strong>
+            <small>{showDate ? formatDate(task.date, locale) : ''}{showDate && task.time ? ' · ' : ''}{task.time || ''}</small>
+          </div>
+          <span className="badge">{task.done ? t.completed : t.pending}</span>
+          <button className="icon-btn small" onClick={() => onRemove(task.id)}><Trash2 size={14} /></button>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function TxList({ transactions, onRemove, locale, t }) {
+  if (!transactions.length) return <div className="empty-box"><div className="empty-icon"><Wallet size={16} /></div><p>{t.noTransactions}</p></div>;
+
+  return (
+    <div className="stack-list">
+      {transactions.map((entry) => (
+        <div className="stack-row" key={entry.id}>
+          <div className={`tx-icon ${entry.type}`}>
+            {entry.type === 'income' ? <TrendingUp size={14} /> : <TrendingDown size={14} />}
+          </div>
+          <div className="stack-main">
+            <strong>{entry.title}</strong>
+            <small>{formatDate(entry.date, locale)} · {CATEGORIES[entry.category]?.[locale] || entry.category}</small>
+          </div>
+          <strong className={`money ${entry.type}`}>{entry.type === 'income' ? '+' : '-'}{money(entry.amount)}</strong>
+          <button className="icon-btn small" onClick={() => onRemove(entry.id)}><Trash2 size={14} /></button>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ReportCard({ month, transactions, tasks, locale, t, topCategory }) {
+  const totalIncome = transactions.filter((item) => item.type === 'income').reduce((sum, item) => sum + Number(item.amount), 0);
+  const totalExpense = transactions.filter((item) => item.type === 'expense').reduce((sum, item) => sum + Number(item.amount), 0);
+  const doneCount = tasks.filter((task) => task.done).length;
+  const monthText = new Intl.DateTimeFormat(locale === 'ru' ? 'ru-RU' : 'uz-UZ', { month: 'long', year: 'numeric' }).format(new Date(`${month}-15T12:00:00`));
+
+  return (
+    <div className="panel report-box">
+      <div className="report-head">
+        <div className="spark"><Sparkles size={16} /></div>
+        <div>
+          <h3>{t.report}</h3>
+          <small>{monthText}</small>
+        </div>
+      </div>
+      <div className="report-grid">
+        <div><span>{t.balance}</span><strong>{money(totalIncome - totalExpense)}</strong></div>
+        <div><span>{t.tasksDone}</span><strong>{doneCount}/{tasks.length}</strong></div>
+        <div><span>{t.topCategory}</span><strong>{topCategory ? `${CATEGORIES[topCategory.key]?.[locale] || topCategory.key} · ${money(topCategory.value)}` : '—'}</strong></div>
+      </div>
+    </div>
+  );
+}
+
+function TaskModal({ onClose, onSave, t }) {
+  const [task, setTask] = useState({ title: '', date: new Date().toISOString().slice(0, 10), time: '' });
+  const submit = (event) => {
+    event.preventDefault();
+    onSave(task);
+    onClose();
+  };
+
+  return (
+    <div className="modal-backdrop" onClick={(event) => event.target === event.currentTarget && onClose()}>
+      <form className="modal" onSubmit={submit}>
+        <div className="modal-head"><h3>{t.addTask}</h3><button type="button" className="icon-btn" onClick={onClose}><Trash2 size={14} /></button></div>
+        <label>
+          <span>{t.taskTitle}</span>
+          <input value={task.title} onChange={(e) => setTask({ ...task, title: e.target.value })} required />
+        </label>
+        <div className="two-fields">
+          <label><span>{t.date}</span><input type="date" value={task.date} onChange={(e) => setTask({ ...task, date: e.target.value })} required /></label>
+          <label><span>{t.time}</span><input type="time" value={task.time} onChange={(e) => setTask({ ...task, time: e.target.value })} /></label>
+        </div>
+        <div className="modal-actions"><button type="button" className="secondary-btn" onClick={onClose}>{t.cancel}</button><button className="primary-btn" type="submit">{t.save}</button></div>
+      </form>
+    </div>
+  );
+}
+
+function TransactionModal({ onClose, onSave, t, locale }) {
+  const [transaction, setTransaction] = useState({ title: '', amount: '', category: 'food', type: 'expense', date: new Date().toISOString().slice(0, 10) });
+  const submit = (event) => {
+    event.preventDefault();
+    onSave(transaction);
+    onClose();
+  };
+
+  return (
+    <div className="modal-backdrop" onClick={(event) => event.target === event.currentTarget && onClose()}>
+      <form className="modal" onSubmit={submit}>
+        <div className="modal-head"><h3>{t.addTransaction}</h3><button type="button" className="icon-btn" onClick={onClose}><Trash2 size={14} /></button></div>
+        <label><span>{t.note}</span><input value={transaction.title} onChange={(e) => setTransaction({ ...transaction, title: e.target.value })} required /></label>
+        <div className="two-fields">
+          <label><span>{t.amount}</span><input type="number" min="1" value={transaction.amount} onChange={(e) => setTransaction({ ...transaction, amount: e.target.value })} required /></label>
+          <label><span>{t.date}</span><input type="date" value={transaction.date} onChange={(e) => setTransaction({ ...transaction, date: e.target.value })} required /></label>
+        </div>
+        <div className="two-fields">
+          <label><span>{t.type}</span><select value={transaction.type} onChange={(e) => setTransaction({ ...transaction, type: e.target.value })}><option value="expense">{t.expense}</option><option value="income">{t.income}</option></select></label>
+          <label><span>{t.finance}</span><select value={transaction.category} onChange={(e) => setTransaction({ ...transaction, category: e.target.value })}>{Object.entries(CATEGORIES).map(([key, value]) => <option key={key} value={key}>{value[locale]}</option>)}</select></label>
+        </div>
+        <div className="modal-actions"><button type="button" className="secondary-btn" onClick={onClose}>{t.cancel}</button><button className="primary-btn" type="submit">{t.save}</button></div>
+      </form>
+    </div>
+  );
+}
+
+function GoalModal({ onClose, onSave, t }) {
+  const [goal, setGoal] = useState({ title: '', target: '', current: '0' });
+  const submit = (event) => {
+    event.preventDefault();
+    onSave(goal);
+    onClose();
+  };
+
+  return (
+    <div className="modal-backdrop" onClick={(event) => event.target === event.currentTarget && onClose()}>
+      <form className="modal" onSubmit={submit}>
+        <div className="modal-head"><h3>{t.addGoal}</h3><button type="button" className="icon-btn" onClick={onClose}><Trash2 size={14} /></button></div>
+        <label><span>{t.target}</span><input value={goal.title} onChange={(e) => setGoal({ ...goal, title: e.target.value })} required /></label>
+        <div className="two-fields">
+          <label><span>{t.target}</span><input type="number" min="1" value={goal.target} onChange={(e) => setGoal({ ...goal, target: e.target.value })} required /></label>
+          <label><span>{t.progress}</span><input type="number" min="0" value={goal.current} onChange={(e) => setGoal({ ...goal, current: e.target.value })} /></label>
+        </div>
+        <div className="modal-actions"><button type="button" className="secondary-btn" onClick={onClose}>{t.cancel}</button><button className="primary-btn" type="submit">{t.save}</button></div>
+      </form>
+    </div>
+  );
+}
